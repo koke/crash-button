@@ -1,5 +1,5 @@
 import { Button } from 'react-native';
-import { useCallback } from 'react';
+import { createElement, useCallback } from 'react';
 
 const CrashButton = ( props ) => {
   const { title, errorMesage } = props;
@@ -15,9 +15,10 @@ const CrashButton = ( props ) => {
     onPress
   }
 
-  return (
-    <Button { ...buttonProps } />
-  );
+  // There seems to be some conflicts with @wordpress/element and using
+  // React externals, so I'm avoiding JSX for now and using React's
+  // createElement directly.
+  return createElement( Button, buttonProps );
 }
 
 export default CrashButton;
